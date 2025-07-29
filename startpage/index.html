@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>startpage</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>welcome, user</h1>
+    <div class="search-box">
+      <form action="https://duckduckgo.com/" method="GET">
+        <input type="text" name="q" placeholder="search the web..." autofocus />
+      </form>
+    </div>
+    <div class="links">
+      <div class="group">
+        <h2>general</h2>
+        <a href="https://github.com">github</a>
+        <a href="https://reddit.com">reddit</a>
+        <a href="https://youtube.com">youtube</a>
+      </div>
+      <div class="group">
+        <h2>dev</h2>
+        <a href="https://wiki.archlinux.org">arch wiki</a>
+        <a href="https://devdocs.io">devdocs</a>
+        <a href="https://stackoverflow.com">stack overflow</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- bubble cursor -->
+  <div class="bubble-cursor"></div>
+
+  <script>
+    const bubble = document.querySelector('.bubble-cursor');
+
+    let target = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+    let pos = { x: target.x, y: target.y };
+
+    let prevRaw = { x: target.x, y: target.y, t: Date.now() };
+    let velocity = { x: 0, y: 0 };
+
+    let smoothSpeed = 0;
+
+    function easeOutCubic(t) {
+      return 1 - Math.pow(1 - t, 3);
+    }
+
+    document.addEventListener('mousemove', (e) => {
+      const now = Date.now();
+      const dx = e.clientX - prevRaw.x;
+      const dy = e.clientY - prevRaw.y;
+      const dt = now - prevRaw.t || 16;
+
+      velocity.x = dx / dt;
+      velocity.y = dy / dt;
+
+      target.x = e.clientX;
+      target.y = e.clientY;
+      prevRaw = { x: e.clientX, y: e.clientY, t: now };
+    });
+
+    function animate() {
+      pos.x += (target.x - pos.x) * 0.15;
+      pos.y += (target.y - pos.y) * 0.15;
+
+      const rawSpeed = Math.min(
+        Math.sqrt(velocity.x * velocity.x + velocity.y * velocity.y),
+        2.5
+      );
+
+      smoothSpeed += (rawSpeed - smoothSpeed) * 0.1;
+
+      const easedSpeed = easeOutCubic(smoothSpeed / 2.5);
+      const stretch = 1 + easedSpeed * 0.15;
+
+      const angle = (Math.atan2(velocity.y, velocity.x) * 180) / Math.PI;
+      const squash = 1 / stretch;
+
+      bubble.style.transform = `translate(${pos.x}px, ${pos.y}px) rotate(${angle}deg) scaleX(${stretch.toFixed(
+        3
+      )}) scaleY(${squash.toFixed(3)})`;
+
+      requestAnimationFrame(animate);
+    }
+    animate();
+  </script>
+</body>
+</html>
