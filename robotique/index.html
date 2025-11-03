@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Résumé Robotique</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-animation"></div>
+    
+    <div class="container">
+        <header>
+            <h1>Résumé Robotique</h1>
+            <p class="subtitle">Séance 1 + 2</p>
+        </header>
+
+        <section class="section">
+            <h2>La Robotique et sa Définition</h2>
+            <div class="content-box">
+                <div class="definition">
+                    <strong>Robotique :</strong> Science <span class="highlight">mécatronique</span> qui s'intéresse aux robots
+                </div>
+                <div class="formula">
+                    <span class="formula-part">Mécanique</span>
+                    <span class="plus">+</span>
+                    <span class="formula-part">Électronique</span>
+                    <span class="plus">+</span>
+                    <span class="formula-part">Informatique</span>
+                    <span class="equals">=</span>
+                    <span class="formula-result">Mécatronique</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Les Robots</h2>
+            <div class="content-box">
+                <div class="definition">
+                    <strong>Robot :</strong> Machine capable d'effectuer des tâches et de manipuler des objets selon un programme
+                </div>
+                <h3>Utilisations</h3>
+                <div class="usage-grid">
+                    <div class="usage-card">
+                        <p>Situations dangereuses</p>
+                    </div>
+                    <div class="usage-card">
+                        <p>Haute précision</p>
+                    </div>
+                    <div class="usage-card">
+                        <p>Tâches répétitives</p>
+                    </div>
+                    <div class="usage-card">
+                        <p>Situations où humains sont incapables</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Composition du Robot</h2>
+            <div class="content-box">
+                <div class="component-list">
+                    <div class="component-item">
+                        <h4>Capteurs</h4>
+                        <p>Détectent les phénomènes physiques comme la température, la lumière, la distance, etc.</p>
+                    </div>
+                    
+                    <div class="component-item">
+                        <h4>Actionneurs</h4>
+                        <p>Dispositifs permettant d'effectuer des actions mécaniques, électriques, ou optiques</p>
+                    </div>
+                    
+                    <div class="component-item">
+                        <h4>Source d'alimentation</h4>
+                        <p>Fournit l'énergie nécessaire pour alimenter le robot</p>
+                    </div>
+                    
+                    <div class="component-item">
+                        <h4>Microcontrôleur</h4>
+                        <p>Le cerveau du robot qui traite les informations et contrôle les périphériques</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Fonctionnement du Microcontrôleur</h2>
+            <div class="content-box">
+                <div class="microcontroller-tree">
+                    <div class="node top-node">
+                        <h4>Traitement des informations</h4>
+                    </div>
+                    <div class="branches">
+                        <div class="branch">
+                            <div class="node mid-node">
+                                <h4>Entrée</h4>
+                            </div>
+                            <div class="node bottom-node">
+                                <h4>Récupération des informations</h4>
+                            </div>
+                        </div>
+                        <div class="branch">
+                            <div class="node mid-node">
+                                <h4>Sortie</h4>
+                            </div>
+                            <div class="node bottom-node">
+                                <h4>Contrôle des périphériques</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>L'Électricité</h2>
+            <div class="content-box">
+                <div class="definition">
+                    <strong>Électricité :</strong> Forme d'énergie résultant du mouvement des électrons dans un conducteur
+                </div>
+                
+                <div class="electricity-content">
+                    <div class="circuit-animation">
+                        <svg viewBox="0 0 400 220" class="circuit-svg">
+                            <defs>
+                                <!-- Glow Filter -->
+                                <filter id="glow">
+                                    <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+                                    <feMerge>
+                                        <feMergeNode in="coloredBlur"/>
+                                        <feMergeNode in="SourceGraphic"/>
+                                    </feMerge>
+                                </filter>
+                                <!-- Metallic Gradient for Wires -->
+                                <linearGradient id="metallic-wire" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#c0c0c0; stop-opacity:1" />
+                                    <stop offset="50%" style="stop-color:#a9a9a9; stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#808080; stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+
+                            <!-- Wire Path -->
+                            <path id="wire-path" d="M 150,180 L 150,70 L 250,70 L 250,180" fill="none" stroke="url(#metallic-wire)" stroke-width="5"/>
+
+                            <!-- Battery -->
+                            <rect x="150" y="180" width="100" height="30" fill="#2E7D32" stroke="#555" stroke-width="2"/>
+                            <rect x="140" y="175" width="10" height="40" fill="#1B5E20" />
+                            <rect x="250" y="175" width="10" height="40" fill="#1B5E20" />
+                            <text x="135" y="170" font-size="24" fill="#888">-</text>
+                            <text x="255" y="170" font-size="24" fill="#888">+</text>
+
+                            <!-- Electrons Flowing in Wire -->
+                            <g filter="url(#glow)">
+                                <circle class="electron-sphere" cx="0" cy="0" r="4">
+                                    <animateMotion dur="4s" repeatCount="indefinite" begin="-0.5s">
+                                        <mpath xlink:href="#wire-path"/>
+                                    </animateMotion>
+                                </circle>
+                                <circle class="electron-sphere" cx="0" cy="0" r="4">
+                                    <animateMotion dur="4s" repeatCount="indefinite" begin="-1.0s">
+                                        <mpath xlink:href="#wire-path"/>
+                                    </animateMotion>
+                                </circle>
+                                <circle class="electron-sphere" cx="0" cy="0" r="4">
+                                    <animateMotion dur="4s" repeatCount="indefinite" begin="-1.5s">
+                                        <mpath xlink:href="#wire-path"/>
+                                    </animateMotion>
+                                </circle>
+                                <circle class="electron-sphere" cx="0" cy="0" r="4">
+                                    <animateMotion dur="4s" repeatCount="indefinite" begin="-2.0s">
+                                        <mpath xlink:href="#wire-path"/>
+                                    </animateMotion>
+                                </circle>
+                                <circle class="electron-sphere" cx="0" cy="0" r="4">
+                                    <animateMotion dur="4s" repeatCount="indefinite" begin="-2.5s">
+                                        <mpath xlink:href="#wire-path"/>
+                                    </animateMotion>
+                                </circle>
+                                <circle class="electron-sphere" cx="0" cy="0" r="4">
+                                    <animateMotion dur="4s" repeatCount="indefinite" begin="-3.0s">
+                                        <mpath xlink:href="#wire-path"/>
+                                    </animateMotion>
+                                </circle>
+                                <circle class="electron-sphere" cx="0" cy="0" r="4">
+                                    <animateMotion dur="4s" repeatCount="indefinite" begin="-3.5s">
+                                        <mpath xlink:href="#wire-path"/>
+                                    </animateMotion>
+                                </circle>
+                                <circle class="electron-sphere" cx="0" cy="0" r="4">
+                                    <animateMotion dur="4s" repeatCount="indefinite" begin="-4.0s">
+                                        <mpath xlink:href="#wire-path"/>
+                                    </animateMotion>
+                                </circle>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="electricity-info">
+                        <p><strong>Électron :</strong> Particule chargée négativement qui se déplace dans un circuit électrique</p>
+                        <p><strong>Courant électrique :</strong> Flux d'électrons qui circulent du pôle négatif vers le pôle positif</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>La Programmation</h2>
+            <div class="content-box">
+                <div class="definition">
+                    <strong>Programmation :</strong> Langage formel pour communiquer avec une machine
+                </div>
+                
+                <h3>Les 3 Étapes</h3>
+                <div class="programming-steps">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h3>L'Algorithme</h3>
+                        <p>Pseudocode ou organigramme</p>
+                        <div class="code-example">
+                            <pre>SI température > 25°
+  ALORS allumer ventilateur
+SINON
+  ALORS éteindre ventilateur</pre>
+                        </div>
+                    </div>
+                    
+                    <div class="step-arrow">↓</div>
+                    
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h3>Le Codage</h3>
+                        <p>Transformer l'algorithme en langage de programmation</p>
+                        <div class="code-example">
+                            <pre>if (temperature > 25) {
+  fan.turnOn();
+} else {
+  fan.turnOff();
+}</pre>
+                        </div>
+                    </div>
+                    
+                    <div class="step-arrow">↓</div>
+                    
+                    <div class="compilation-interpretation">
+                        <div class="comp-inter-card">
+                            <h3>Compilation</h3>
+                            <p>Transformer tout le code en langage machine avant l'exécution</p>
+                            <div class="code-example">
+                                <pre>// Code C
+#include &lt;stdio.h&gt;
+
+int main() {
+    printf("Hello World!");
+    return 0;
+}</pre>
+                            </div>
+                            <div class="arrow-down">↓</div>
+                            <div class="code-example">
+                                <pre>// Compilation
+gcc hello.c -o hello
+./hello</pre>
+                            </div>
+                        </div>
+                        
+                        <div class="comp-inter-card">
+                            <h3>Interprétation</h3>
+                            <p>Exécuter le code ligne par ligne sans compilation préalable</p>
+                            <div class="code-example">
+                                <pre># Code Python
+print("Hello World!")</pre>
+                            </div>
+                            <div class="arrow-down">↓</div>
+                            <div class="code-example">
+                                <pre># Exécution directe
+python hello.py</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+    
+</body>
+</html>
