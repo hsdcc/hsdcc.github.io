@@ -7,14 +7,13 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <div class="container">
-        <header>
+    <div class="slides-container">
+        <header class="slide">
             <h1><strong>résumé</strong></h1>
             <p class="subtitle"> séances : 1 + 2 + 3</p>
         </header>
 
-        <section class="section">
+        <section class="section slide">
             <h2>La Robotique et sa Définition</h2>
             <div class="content-box">
                 <div class="definition">
@@ -32,7 +31,7 @@
             </div>
         </section>
 
-        <section class="section">
+        <section class="section slide">
             <h2>Les Robots</h2>
             <div class="content-box">
                 <div class="definition">
@@ -56,7 +55,7 @@
             </div>
         </section>
 
-        <section class="section">
+        <section class="section slide">
             <h2>Composition du Robot</h2>
             <div class="content-box">
                 <div class="component-list">
@@ -83,7 +82,7 @@
             </div>
         </section>
 
-        <section class="section">
+        <section class="section slide">
             <h2>Fonctionnement du Microcontrôleur</h2>
             <div class="content-box">
                 <div class="microcontroller-tree">
@@ -112,7 +111,7 @@
             </div>
         </section>
 
-        <section class="section">
+        <section class="section slide">
             <h2>L'Électricité</h2>
             <div class="content-box">
                 <div class="definition">
@@ -202,7 +201,7 @@
             </div>
         </section>
 
-        <section class="section">
+        <section class="section slide">
             <h2>La Programmation</h2>
             <div class="content-box">
                 <div class="definition">
@@ -278,8 +277,11 @@ python hello.py</pre>
                 </div>
             </div>
         </section>
-
     </div>
-    
+    <button id="prevBtn" class="nav-btn prev-btn">←</button>
+    <button id="nextBtn" class="nav-btn next-btn">→</button>
+    <button id="darkModeToggle" class="dark-mode-toggle">🌙</button>
+
+    <script src="script.js"></script>
 </body>
 </html>

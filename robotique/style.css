@@ -1,20 +1,104 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* CSS Variables for theming */
+:root {
+    --bg-color: linear-gradient(135deg, #1a0f0f 0%, #2d1510 25%, #4a1f15 50%, #6b2b1a 75%, #8b3a1f 100%);
+    --text-color: #e8e8e8;
+    --header-h1-color: #ff9966;
+    --subtitle-color: #ffaa88;
+    --section-h2-color: #ff9966;
+    --section-h3-color: #ffaa88;
+    --content-box-bg: rgba(30, 20, 20, 0.6);
+    --content-box-border: rgba(255, 153, 102, 0.2);
+    --definition-bg: rgba(255, 153, 102, 0.15);
+    --definition-border-left: #ff9966;
+    --highlight-color: #ff9966;
+    --formula-part-bg: rgba(255, 153, 102, 0.2);
+    --formula-part-border: #ff9966;
+    --formula-part-color: #ffaa88;
+    --formula-result-bg: #ff7744;
+    --formula-result-color: #1a0f0f;
+    --usage-card-bg: rgba(255, 153, 102, 0.15);
+    --usage-card-border: #ff9966;
+    --usage-card-hover-border: #ff7744;
+    --component-item-bg: rgba(255, 153, 102, 0.15);
+    --component-item-border-left: #ff9966;
+    --component-item-hover-bg: rgba(255, 153, 102, 0.25);
+    --component-item-hover-border-left: #ff7744;
+    --component-item-h4-color: #ff9966;
+    --node-bg: rgba(255, 153, 102, 0.1);
+    --node-border: #ff9966;
+    --node-h4-color: #ff9966;
+    --connecting-line-color: #ff9966;
+    --step-card-bg: rgba(255, 153, 102, 0.15);
+    --step-card-border: #ff9966;
+    --step-number-bg: #ff7744;
+    --step-number-color: #1a0f0f;
+    --step-card-h3-color: #ff9966;
+    --step-card-p-color: #d0d0d0;
+    --code-example-bg: #1a0f0f;
+    --code-example-border-left: #ff7744;
+    --code-example-pre-color: #ffcc99;
+    --step-arrow-color: #ff9966;
+    --electron-sphere-fill: #00abff;
+}
+
+body.dark-mode {
+    --bg-color: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 25%, #2a2a2a 50%, #3a3a3a 75%, #4a4a4a 100%);
+    --text-color: #f0f0f0;
+    --header-h1-color: #88ccff;
+    --subtitle-color: #aaddff;
+    --section-h2-color: #88ccff;
+    --section-h3-color: #aaddff;
+    --content-box-bg: rgba(10, 10, 10, 0.6);
+    --content-box-border: rgba(136, 204, 255, 0.2);
+    --definition-bg: rgba(136, 204, 255, 0.15);
+    --definition-border-left: #88ccff;
+    --highlight-color: #88ccff;
+    --formula-part-bg: rgba(136, 204, 255, 0.2);
+    --formula-part-border: #88ccff;
+    --formula-part-color: #aaddff;
+    --formula-result-bg: #55aaff;
+    --formula-result-color: #0a0a0a;
+    --usage-card-bg: rgba(136, 204, 255, 0.15);
+    --usage-card-border: #88ccff;
+    --usage-card-hover-border: #55aaff;
+    --component-item-bg: rgba(136, 204, 255, 0.15);
+    --component-item-border-left: #88ccff;
+    --component-item-hover-bg: rgba(136, 204, 255, 0.25);
+    --component-item-hover-border-left: #55aaff;
+    --component-item-h4-color: #88ccff;
+    --node-bg: rgba(136, 204, 255, 0.1);
+    --node-border: #88ccff;
+    --node-h4-color: #88ccff;
+    --connecting-line-color: #88ccff;
+    --step-card-bg: rgba(136, 204, 255, 0.15);
+    --step-card-border: #88ccff;
+    --step-number-bg: #55aaff;
+    --step-number-color: #0a0a0a;
+    --step-card-h3-color: #88ccff;
+    --step-card-p-color: #c0c0c0;
+    --code-example-bg: #0a0a0a;
+    --code-example-border-left: #55aaff;
+    --code-example-pre-color: #aaddff;
+    --step-arrow-color: #88ccff;
+    --electron-sphere-fill: #00abff; /* Keep electron color consistent */
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden; /* Remove vertical scrolling */
 }
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #e8e8e8;
-    overflow-x: hidden;
+    color: var(--text-color);
     line-height: 1.6;
-    background: linear-gradient(135deg, #1a0f0f 0%, #2d1510 25%, #4a1f15 50%, #6b2b1a 75%, #8b3a1f 100%);
+    background: var(--bg-color);
     background-attachment: fixed;
     background-size: 200% 200%;
     animation: gradientShift 20s ease infinite;
+    border-radius: 20px; /* Rounded borders for the main container */
+    transition: background-color 0.5s ease; /* Smooth transition for dark mode */
 }
-
 
 @keyframes gradientShift {
     0% {
@@ -28,10 +112,30 @@ body {
     }
 }
 
+.slides-container {
+    display: flex;
+    width: fit-content; /* Will be controlled by JS */
+    height: 100%;
+    transition: transform 0.7s ease-in-out; /* Smooth slide transition */
+}
+
+.slide {
+    flex: 0 0 100vw; /* Each slide takes full viewport width */
+    height: 100vh; /* Each slide takes full viewport height */
+    overflow-y: auto; /* Allow vertical scrolling within a slide if content is too long */
+    padding: 40px 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+    text-align: center;
+}
+
 .container {
     max-width: 900px;
     margin: 0 auto;
-    padding: 40px 20px;
+    /* padding: 40px 20px;  Moved to .slide */
 }
 
 /* Header */
@@ -43,40 +147,40 @@ header {
 header h1 {
     font-size: 4rem;
     font-weight: 700;
-    color: #ff9966;
+    color: var(--header-h1-color);
     margin-bottom: 20px;
 }
 
 .subtitle {
     font-size: 1.5rem;
-    color: #ffaa88;
+    color: var(--subtitle-color);
 }
 
 /* Sections */
 .section {
-    margin: 60px 0;
+    /* margin: 60px 0; */ /* Removed, handled by slide padding */
 }
 
 .section h2 {
     font-size: 2.5rem;
     margin-bottom: 30px;
     text-align: center;
-    color: #ff9966;
+    color: var(--section-h2-color);
 }
 
 .section h3 {
     font-size: 1.8rem;
     margin: 30px 0 20px 0;
-    color: #ffaa88;
+    color: var(--section-h3-color);
 }
 
 .content-box {
-    background: rgba(30, 20, 20, 0.6);
+    background: var(--content-box-bg);
     backdrop-filter: blur(15px);
     border-radius: 20px;
     padding: 40px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-    border: 1px solid rgba(255, 153, 102, 0.2);
+    border: 1px solid var(--content-box-border);
 }
 
 /* Definitions */
@@ -84,13 +188,13 @@ header h1 {
     font-size: 1.2rem;
     padding: 20px;
     margin-bottom: 30px;
-    background: rgba(255, 153, 102, 0.15);
-    border-left: 4px solid #ff9966;
+    background: var(--definition-bg);
+    border-left: 4px solid var(--definition-border-left);
     border-radius: 8px;
 }
 
 .highlight {
-    color: #ff9966;
+    color: var(--highlight-color);
     font-weight: bold;
     font-style: italic;
 }
@@ -107,12 +211,12 @@ header h1 {
 }
 
 .formula-part {
-    background: rgba(255, 153, 102, 0.2);
+    background: var(--formula-part-bg);
     padding: 15px 30px;
     border-radius: 10px;
     font-weight: 600;
-    color: #ffaa88;
-    border: 2px solid #ff9966;
+    color: var(--formula-part-color);
+    border: 2px solid var(--formula-part-border);
 }
 
 .plus, .equals {
@@ -121,8 +225,8 @@ header h1 {
 }
 
 .formula-result {
-    background: #ff7744;
-    color: #1a0f0f;
+    background: var(--formula-result-bg);
+    color: var(--formula-result-color);
     padding: 15px 40px;
     border-radius: 10px;
     font-weight: 700;
@@ -140,17 +244,17 @@ header h1 {
 }
 
 .usage-card {
-    background: rgba(255, 153, 102, 0.15);
+    background: var(--usage-card-bg);
     padding: 25px;
     border-radius: 12px;
     text-align: center;
-    border: 2px solid #ff9966;
+    border: 2px solid var(--usage-card-border);
     transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
 .usage-card:hover {
     transform: translateY(-3px);
-    border-color: #ff7744;
+    border-color: var(--usage-card-hover-border);
     box-shadow: 0 4px 12px rgba(255, 119, 68, 0.3);
 }
 
@@ -162,23 +266,23 @@ header h1 {
 }
 
 .component-item {
-    background: rgba(255, 153, 102, 0.15);
+    background: var(--component-item-bg);
     padding: 25px;
     border-radius: 12px;
-    border-left: 4px solid #ff9966;
+    border-left: 4px solid var(--component-item-border-left);
     transition: all 0.3s ease;
 }
 
 .component-item:hover {
-    background: rgba(255, 153, 102, 0.25);
-    border-left-color: #ff7744;
+    background: var(--component-item-hover-bg);
+    border-left-color: var(--component-item-hover-border-left);
     transform: translateX(5px);
 }
 
 .component-item h4 {
     font-size: 1.3rem;
     margin-bottom: 10px;
-    color: #ff9966;
+    color: var(--component-item-h4-color);
 }
 
 /* Microcontroller Tree Diagram */
@@ -191,8 +295,8 @@ header h1 {
 }
 
 .node {
-    background: rgba(255, 153, 102, 0.1);
-    border: 1px solid #ff9966;
+    background: var(--node-bg);
+    border: 1px solid var(--node-border);
     padding: 15px;
     border-radius: 12px;
     text-align: center;
@@ -203,7 +307,7 @@ header h1 {
 }
 
 .node h4 {
-    color: #ff9966;
+    color: var(--node-h4-color);
     margin: 0;
 }
 
@@ -232,7 +336,7 @@ header h1 {
     top: 100%;
     width: 4px;
     height: 20px;
-    background: #ff9966;
+    background: var(--connecting-line-color);
     transform: translateX(-50%);
 }
 
@@ -244,7 +348,7 @@ header h1 {
     top: 0;
     width: 50%;
     height: 4px;
-    background: #ff9966;
+    background: var(--connecting-line-color);
 }
 
 /* Lines up from mid-nodes to horizontal line */
@@ -255,7 +359,7 @@ header h1 {
     bottom: 100%;
     width: 4px;
     height: 20px;
-    background: #ff9966;
+    background: var(--connecting-line-color);
     transform: translateX(-50%);
 }
 
@@ -267,7 +371,7 @@ header h1 {
     top: 100%;
     width: 4px;
     height: 40px;
-    background: #ff9966;
+    background: var(--connecting-line-color);
     transform: translateX(-50%);
 }
 
@@ -280,19 +384,19 @@ header h1 {
 }
 
 .step-card {
-    background: rgba(255, 153, 102, 0.15);
+    background: var(--step-card-bg);
     padding: 30px;
     border-radius: 20px;
     position: relative;
-    border: 2px solid #ff9966;
+    border: 2px solid var(--step-card-border);
 }
 
 .step-number {
     position: absolute;
     top: -20px;
     left: 30px;
-    background: #ff7744;
-    color: #1a0f0f;
+    background: var(--step-number-bg);
+    color: var(--step-number-color);
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -307,25 +411,25 @@ header h1 {
 .step-card h3 {
     font-size: 1.8rem;
     margin: 20px 0 10px 0;
-    color: #ff9966;
+    color: var(--step-card-h3-color);
 }
 
 .step-card p {
     font-size: 1.1rem;
     margin-bottom: 20px;
-    color: #d0d0d0;
+    color: var(--step-card-p-color);
 }
 
 .code-example {
-    background: #1a0f0f;
+    background: var(--code-example-bg);
     padding: 20px;
     border-radius: 10px;
     margin-top: 15px;
-    border-left: 4px solid #ff7744;
+    border-left: 4px solid var(--code-example-border-left);
 }
 
 .code-example pre {
-    color: #ffcc99;
+    color: var(--code-example-pre-color);
     font-family: 'Courier New', monospace;
     font-size: 1rem;
     overflow-x: auto;
@@ -335,7 +439,7 @@ header h1 {
 .step-arrow {
     text-align: center;
     font-size: 3rem;
-    color: #ff9966;
+    color: var(--step-arrow-color);
 }
 
 /* Electricity Section */
@@ -363,9 +467,57 @@ header h1 {
 }
 
 .electron-sphere, .stored-electron {
-    fill: #00abff;
+    fill: var(--electron-sphere-fill);
 }
 
+/* Navigation Buttons */
+.nav-btn {
+    position: fixed;
+    bottom: 20px;
+    background-color: #ff7744;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(255, 119, 68, 0.4);
+    transition: background-color 0.3s ease;
+}
+
+.nav-btn:hover {
+    background-color: #ff5522;
+}
+
+.prev-btn {
+    right: 100px;
+}
+
+.next-btn {
+    right: 20px;
+}
+
+/* Dark Mode Toggle */
+.dark-mode-toggle {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: #666;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease;
+}
+
+.dark-mode-toggle:hover {
+    background-color: #444;
+}
 
 
 /* Responsive */
@@ -404,5 +556,19 @@ header h1 {
     
     .wire {
         width: 150px;
+    }
+
+    .nav-btn {
+        padding: 8px 15px;
+        font-size: 1.2rem;
+    }
+
+    .prev-btn {
+        right: 80px;
+    }
+
+    .dark-mode-toggle {
+        padding: 8px 12px;
+        font-size: 1.2rem;
     }
 }
