@@ -467,7 +467,14 @@ header h1 {
 }
 
 .step-arrow {
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 3rem;
+}
+
+.step-arrow::before {
+    content: '\2193'; /* Unicode for downward arrow */
     font-size: 3rem;
     color: var(--step-arrow-color);
 }
