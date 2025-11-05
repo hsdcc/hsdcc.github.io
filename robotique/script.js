@@ -9,13 +9,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function showSlide(index) {
         if (index < 0) {
-            currentSlide = sections.length - 1;
+            index = 0;
         } else if (index >= sections.length) {
-            currentSlide = 0;
-        } else {
-            currentSlide = index;
+            index = sections.length - 1;
         }
+        currentSlide = index;
         slidesContainer.style.transform = `translateX(-${currentSlide * 100}vw)`;
+        updateButtonStates();
+    }
+
+    function updateButtonStates() {
+        prevBtn.disabled = currentSlide === 0;
+        nextBtn.disabled = currentSlide === sections.length - 1;
     }
 
     prevBtn.addEventListener('click', () => {
