@@ -81,6 +81,10 @@ body.dark-mode {
     --code-example-pre-color: #aaddff;
     --step-arrow-color: #88ccff;
     --electron-sphere-fill: #00abff; /* Keep electron color consistent */
+    --nav-btn-bg-color: #55aaff;
+    --nav-btn-hover-bg-color: #88ccff;
+    --dark-mode-toggle-bg-color: #444;
+    --dark-mode-toggle-hover-bg-color: #666;
 }
 
 html, body {
@@ -97,7 +101,7 @@ body {
     background-size: 200% 200%;
     animation: gradientShift 20s ease infinite;
     border-radius: 20px; /* Rounded borders for the main container */
-    transition: background-color 0.5s ease; /* Smooth transition for dark mode */
+    transition: background-color 0.5s cubic-bezier(0.22, 1, 0.22, 1); /* Smooth transition for dark mode */
 }
 
 @keyframes gradientShift {
@@ -116,7 +120,7 @@ body {
     display: flex;
     width: fit-content; /* Will be controlled by JS */
     height: 100%;
-    transition: transform 0.7s ease-in-out; /* Smooth slide transition */
+    transition: transform 0.7s cubic-bezier(0.22, 1, 0.22, 1); /* Smooth slide transition */
 }
 
 .slide {
@@ -249,7 +253,7 @@ header h1 {
     border-radius: 12px;
     text-align: center;
     border: 2px solid var(--usage-card-border);
-    transition: transform 0.2s ease, border-color 0.2s ease;
+    transition: transform 0.2s cubic-bezier(0.22, 1, 0.22, 1), border-color 0.2s cubic-bezier(0.22, 1, 0.22, 1);
 }
 
 .usage-card:hover {
@@ -270,7 +274,7 @@ header h1 {
     padding: 25px;
     border-radius: 12px;
     border-left: 4px solid var(--component-item-border-left);
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.22, 1, 0.22, 1);
 }
 
 .component-item:hover {
@@ -474,7 +478,7 @@ header h1 {
 .nav-btn {
     position: fixed;
     bottom: 20px;
-    background-color: #ff7744;
+    background-color: var(--nav-btn-bg-color, #ff7744);
     color: white;
     border: none;
     padding: 10px 20px;
@@ -482,12 +486,11 @@ header h1 {
     cursor: pointer;
     font-size: 1.5rem;
     z-index: 1000;
-    box-shadow: 0 4px 12px rgba(255, 119, 68, 0.4);
-    transition: background-color 0.3s ease;
+transition: background-color 0.3s cubic-bezier(0.22, 1, 0.22, 1);
 }
 
 .nav-btn:hover {
-    background-color: #ff5522;
+    background-color: var(--nav-btn-hover-bg-color, #ff5522);
 }
 
 .prev-btn {
@@ -503,7 +506,7 @@ header h1 {
     position: fixed;
     bottom: 20px;
     left: 20px;
-    background-color: #666;
+    background-color: var(--dark-mode-toggle-bg-color, #666);
     color: white;
     border: none;
     padding: 10px 15px;
@@ -512,11 +515,11 @@ header h1 {
     font-size: 1.5rem;
     z-index: 1000;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s cubic-bezier(0.22, 1, 0.22, 1);
 }
 
 .dark-mode-toggle:hover {
-    background-color: #444;
+    background-color: var(--dark-mode-toggle-hover-bg-color, #444);
 }
 
 

@@ -39,12 +39,23 @@ document.addEventListener('DOMContentLoaded', () => {
     darkModeToggle.addEventListener('click', () => {
         document.body.classList.toggle('dark-mode');
         localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+        updateDarkModeIcon();
     });
 
     // Check for saved dark mode preference
     if (localStorage.getItem('darkMode') === 'true') {
         document.body.classList.add('dark-mode');
     }
+
+    function updateDarkModeIcon() {
+        if (document.body.classList.contains('dark-mode')) {
+            darkModeToggle.innerHTML = '☀️';
+        } else {
+            darkModeToggle.innerHTML = '🌙';
+        }
+    }
+
+    updateDarkModeIcon();
 
     // Initialize the first slide
     showSlide(0);
