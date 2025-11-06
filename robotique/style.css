@@ -123,6 +123,16 @@ body {
     transition: transform 0.7s cubic-bezier(0.22, 1, 0.22, 1); /* Smooth slide transition */
 }
 
+body.panel-active .slides-container {
+    transform: translateX(-350px); /* Shift content to the left to make space for the panel */
+}
+
+@media (max-width: 768px) {
+    body.panel-active .slides-container {
+        transform: translateX(-100%); /* Shift content by full width on small screens */
+    }
+}
+
 .slide {
     flex: 0 0 100vw; /* Each slide takes full viewport width */
     height: 100vh; /* Each slide takes full viewport height */
@@ -284,7 +294,7 @@ header h1 {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Subtle initial shadow */
     font-size: 1.1rem;
     line-height: 1.4;
-    display: flex;
+    display: flex; /* Use flexbox for content alignment */
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -300,27 +310,34 @@ header h1 {
 
 /* Component List */
 .component-list {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Two columns, responsive */
+    gap: 30px; /* Increased gap for better spacing */
+    margin-top: 40px; /* Add some top margin */
 }
 
 .component-item {
     background: var(--component-item-bg);
-    padding: 25px;
-    border-radius: 12px;
-    border-left: 4px solid var(--component-item-border-left);
+    padding: 30px; /* Slightly more padding */
+    border-radius: 15px; /* Slightly more rounded corners */
+    border: 2px solid var(--component-item-border-left); /* Changed to full border */
+    text-align: center; /* Center the text */
     transition: all 0.3s cubic-bezier(0.22, 1, 0.22, 1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Subtle initial shadow */
+    display: flex; /* Use flexbox for content alignment */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .component-item:hover {
-    background: var(--component-item-hover-bg);
-    border-left-color: var(--component-item-hover-border-left);
-    transform: translateX(5px);
+    transform: translateY(-8px) scale(1.03); /* More pronounced lift and scale */
+    border-color: var(--component-item-hover-border-left); /* Change border color on hover */
+    box-shadow: 0 8px 25px rgba(255, 119, 68, 0.4); /* Stronger shadow on hover */
 }
 
 .component-item h4 {
-    font-size: 1.3rem;
+    font-size: 1.5rem; /* Slightly larger heading */
     margin-bottom: 10px;
     color: var(--component-item-h4-color);
 }
@@ -637,12 +654,93 @@ transition: background-color 0.3s cubic-bezier(0.22, 1, 0.22, 1);
         font-size: 1.2rem;
     }
 
-    .prev-btn {
-        right: 80px;
+    .component-list {
+        grid-template-columns: 1fr; /* Stack components on small screens */
     }
+}
 
-    .dark-mode-toggle {
-        padding: 8px 12px;
-        font-size: 1.2rem;
+/* Slide-in Panel Styles */
+.slide-in-panel-overlay {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0); /* Fully transparent */
+    z-index: 1000;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+}
+
+.slide-in-panel-overlay.visible {
+    display: block;
+    opacity: 1;
+}
+
+.slide-in-panel {
+    position: fixed;
+    top: 0;
+    right: -400px; /* Start off-screen to the right */
+    width: 350px;
+    height: 100%;
+    background-color: var(--content-box-bg);
+    border-left: 1px solid var(--content-box-border);
+    box-shadow: -8px 0 32px rgba(0, 0, 0, 0.5);
+    z-index: 1001;
+    transition: right 0.4s cubic-bezier(0.22, 1, 0.22, 1);
+    padding: 30px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    color: var(--text-color);
+    text-align: center;
+}
+
+.slide-in-panel.open {
+    right: 0; /* Slide in */
+}
+
+.close-panel-button {
+    color: var(--highlight-color);
+    position: absolute;
+    top: 15px;
+    left: 20px; /* Positioned on the left inside the panel */
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-panel-button:hover,
+.close-panel-button:focus {
+    color: var(--formula-result-bg);
+}
+
+#panelImage {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-top: 50px; /* Space for close button */
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+#panelExplanation {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    text-align: left;
+}
+
+/* Responsive for slide-in panel */
+@media (max-width: 768px) {
+    .slide-in-panel {
+        width: 100%; /* Full width on small screens */
+        right: -100%;
+    }
+    .slide-in-panel.open {
+        right: 0;
+    }
+    .close-panel-button {
+        left: 15px;
     }
 }

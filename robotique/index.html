@@ -64,24 +64,24 @@
             <h2>Composition du Robot</h2>
             <div class="content-box">
                 <div class="component-list">
-                    <div class="component-item">
-                        <h4>Capteurs</h4>
-                        <p>Détectent les phénomènes physiques comme la température, la lumière, la distance, etc.</p>
+                    <div class="component-item" data-image="placeholder.png" data-explanation="Détails sur le Microcontrôleur.">
+                        <h4>Microcontrôleur</h4>
+                        <p>Le cerveau du robot qui traite les informations et contrôle les périphériques</p>
                     </div>
                     
-                    <div class="component-item">
-                        <h4>Actionneurs</h4>
-                        <p>Dispositifs permettant d'effectuer des actions mécaniques, électriques, ou optiques</p>
-                    </div>
-                    
-                    <div class="component-item">
+                    <div class="component-item" data-image="placeholder.png" data-explanation="Détails sur la Source d'alimentation.">
                         <h4>Source d'alimentation</h4>
                         <p>Fournit l'énergie nécessaire pour alimenter le robot</p>
                     </div>
                     
-                    <div class="component-item">
-                        <h4>Microcontrôleur</h4>
-                        <p>Le cerveau du robot qui traite les informations et contrôle les périphériques</p>
+                    <div class="component-item" data-image="placeholder.png" data-explanation="Détails sur les Actionneurs.">
+                        <h4>Actionneurs</h4>
+                        <p>Dispositifs permettant d'effectuer des actions mécaniques, électriques, ou optiques</p>
+                    </div>
+                    
+                    <div class="component-item" data-image="placeholder.png" data-explanation="Détails sur les Capteurs.">
+                        <h4>Capteurs</h4>
+                        <p>Détectent les phénomènes physiques comme la température, la lumière, la distance, etc.</p>
                     </div>
                 </div>
             </div>
@@ -288,6 +288,13 @@ python hello.py</pre>
     <button id="prevBtn" class="nav-btn prev-btn">←</button>
     <button id="nextBtn" class="nav-btn next-btn">→</button>
     <button id="darkModeToggle" class="dark-mode-toggle">🌙</button>
+
+    <div id="slideInPanelOverlay" class="slide-in-panel-overlay"></div>
+    <div id="slideInPanel" class="slide-in-panel">
+        <span class="close-panel-button">&times;</span>
+        <img id="panelImage" src="placeholder.png" alt="Component Image">
+        <p id="panelExplanation">Détails du composant.</p>
+    </div>
 
     <script src="script.js"></script>
 </body>
