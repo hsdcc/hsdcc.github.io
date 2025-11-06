@@ -689,11 +689,10 @@ transition: background-color 0.3s cubic-bezier(0.22, 1, 0.22, 1);
     padding: 30px;
     box-sizing: border-box;
     overflow-y: auto;
-    color: var(--text-color);
-    text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    backdrop-filter: blur(10px);
 }
 
 .slide-in-panel.open {
