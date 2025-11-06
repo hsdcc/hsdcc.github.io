@@ -123,15 +123,7 @@ body {
     transition: transform 0.7s cubic-bezier(0.22, 1, 0.22, 1); /* Smooth slide transition */
 }
 
-body.panel-active .slides-container {
-    transform: translateX(-350px); /* Shift content to the left to make space for the panel */
-}
 
-@media (max-width: 768px) {
-    body.panel-active .slides-container {
-        transform: translateX(-100%); /* Shift content by full width on small screens */
-    }
-}
 
 .slide {
     flex: 0 0 100vw; /* Each slide takes full viewport width */
@@ -144,6 +136,11 @@ body.panel-active .slides-container {
     justify-content: center; /* Center content vertically */
     align-items: center; /* Center content horizontally */
     text-align: center;
+    transition: padding-right 0.4s cubic-bezier(0.22, 1, 0.22, 1);
+}
+
+.slide.panel-active-slide {
+    padding-right: 370px;
 }
 
 .slide:last-child {
@@ -694,6 +691,9 @@ transition: background-color 0.3s cubic-bezier(0.22, 1, 0.22, 1);
     overflow-y: auto;
     color: var(--text-color);
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .slide-in-panel.open {
@@ -719,10 +719,9 @@ transition: background-color 0.3s cubic-bezier(0.22, 1, 0.22, 1);
 #panelImage {
     max-width: 100%;
     height: auto;
-    border-radius: 10px;
     margin-top: 50px; /* Space for close button */
     margin-bottom: 20px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    background-color: transparent;
 }
 
 #panelExplanation {

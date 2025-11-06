@@ -84,12 +84,22 @@ document.addEventListener('DOMContentLoaded', () => {
         slideInPanelOverlay.classList.add('visible');
         document.body.classList.add('panel-active'); // Add class to body
         activeComponentItem = item;
+        const slide = activeComponentItem.closest('.slide');
+        if (slide) {
+            slide.classList.add('panel-active-slide');
+        }
     }
 
     function closePanel() {
         slideInPanel.classList.remove('open');
         slideInPanelOverlay.classList.remove('visible');
         document.body.classList.remove('panel-active'); // Remove class from body
+        if (activeComponentItem) {
+            const slide = activeComponentItem.closest('.slide');
+            if (slide) {
+                slide.classList.remove('panel-active-slide');
+            }
+        }
         activeComponentItem = null;
     }
 
