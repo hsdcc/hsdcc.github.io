@@ -143,9 +143,7 @@ body {
     padding-right: 370px;
 }
 
-.slide:last-child {
-    justify-content: flex-start;
-}
+
 
 .container {
     max-width: 900px;
@@ -202,10 +200,16 @@ header h1 {
 .definition {
     font-size: 1.2rem;
     padding: 20px;
-    margin-bottom: 30px;
     background: var(--definition-bg);
     border-left: 4px solid var(--definition-border-left);
     border-radius: 8px;
+}
+
+.programming-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-top: 20px;
 }
 
 .highlight {
@@ -518,18 +522,7 @@ header h1 {
     align-self: center;
 }
 
-.step-arrow {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 3rem;
-}
 
-.step-arrow::before {
-    content: '\2193'; /* Unicode for downward arrow */
-    font-size: 3rem;
-    color: var(--step-arrow-color);
-}
 
 /* Electricity Section */
 .electricity-content {
