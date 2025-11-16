@@ -1,15 +1,16 @@
 body {
     margin: 0;
-    padding: 0;
+    padding: 2rem;
     font-family: sans-serif;
     background-image: url('images/fluid-gruv.png');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .glass-container {
@@ -24,6 +25,8 @@ body {
     max-width: 800px;
     width: 90%;
     transform-style: preserve-3d;
+    margin: 0 auto;
+    margin-top: -50px;
 }
 
 .content {
@@ -82,6 +85,42 @@ h1 {
 
 h1:hover {
     text-shadow: 0 0 5px #ebdbb2;
+}
+
+.top-header {
+    text-align: center;
+    animation: fadeInUp 1s ease-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -100px;
+}
+
+.logo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    margin-top: -1rem;
+    transform-style: preserve-3d;
+}
+
+.name {
+    color: white;
+    font-size: 3rem;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 
