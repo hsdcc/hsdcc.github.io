@@ -66,6 +66,9 @@ const applyMoveEffect = (element, textElement) => {
                 textElement.textAnimationProgress = 0;
             }
         }
+        
+        // adjust z-index when moving to act like a focused window
+        element.style.zIndex = isMoved ? '10' : 'auto';
     });
 
     const animate = () => {
@@ -96,12 +99,17 @@ const applyMoveEffect = (element, textElement) => {
             
             // animate text position when it's appearing, moving same distance as logo but to the right
             if (textElement.targetOpacity === 1 && textElement.currentOpacity > 0.1) {
-                // text should move in sync with the logo's movement but less distance: as logo moves from 0 to -100,
-                // text should move from 0 to +25 (in the opposite direction, but less distance)
-                const textPosition = -roundedTranslationX * 0.25; // when logo is at -100, this becomes +25
-                textElement.style.transform = `translateX(${textPosition}px)`;
+                // calculate the target text position based on logo position
+                const targetTextPosition = -roundedTranslationX * 0.25; // when logo is at -60, this becomes +15
+                
+                // update current text position with faster animation
+                textElement.currentTextPosition = textElement.currentTextPosition || 0;
+                textElement.currentTextPosition = lerp(textElement.currentTextPosition, targetTextPosition, 0.4); // much faster than logo's 0.05
+                
+                textElement.style.transform = `translateX(${textElement.currentTextPosition}px)`;
             } else if (textElement.targetOpacity === 0) {
                 // reset text position when hiding
+                textElement.currentTextPosition = 0;
                 textElement.style.transform = 'translateX(0px)';
             }
         }
