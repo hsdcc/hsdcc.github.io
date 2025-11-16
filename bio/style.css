@@ -47,8 +47,41 @@ a {
     color: white;
     text-decoration: none;
     transition: color 0.3s ease;
+    position: relative;
+}
+
+a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #fabd2f;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
 }
 
 a:hover {
-    color: #ddd;
+    color: #fabd2f;
 }
+
+a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+a:active {
+    text-shadow: 0 0 10px #ebdbb2, 0 0 20px #ebdbb2;
+}
+
+h1 {
+    transition: text-shadow 0.3s ease;
+}
+
+h1:hover {
+    text-shadow: 0 0 5px #ebdbb2;
+}
+
+

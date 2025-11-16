@@ -44,7 +44,7 @@ const animate = () => {
     const roundedX = Math.round(current.x * 100) / 100;
     const roundedY = Math.round(current.y * 100) / 100;
 
-    const scale = (Math.abs(roundedX) > 0 || Math.abs(roundedY) > 0) ? 1.05 : 1;
+    const scale = 1.05;
 
     container.style.transform = `perspective(1000px) rotateX(${roundedX}deg) rotateY(${roundedY}deg) scale3d(${scale}, ${scale}, ${scale})`;
 
@@ -52,3 +52,5 @@ const animate = () => {
 };
 
 animate();
+
+
