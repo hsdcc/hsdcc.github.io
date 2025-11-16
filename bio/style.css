@@ -96,7 +96,10 @@ body {
     margin-top: 8px;
     transform-origin: center center;
     position: relative;
-    min-height: 200px;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 /* Ensure elements with 3D effects maintain proper rendering context */
@@ -111,7 +114,7 @@ body {
     transform-style: preserve-3d;
     transform: translateZ(20px); /* Lift content slightly forward for better 3D effect */
     pointer-events: auto;
-    margin-bottom: 60px; /* Space for the dock */
+    margin-bottom: 10px; /* Reduced space for the dock */
 }
 
 .has-3d-effect {
@@ -155,13 +158,13 @@ a::after {
     height: 2px;
     bottom: 0;
     left: 0;
-    background-color: #fabd2f;
+    background-color: white;
     transform-origin: bottom right;
     transition: transform 0.25s ease-out;
 }
 
 a:hover {
-    color: #fabd2f;
+    color: white;
 }
 
 a:hover::after {
@@ -230,10 +233,9 @@ h1:hover {
 
 /* Dock Styles */
 .dock-container {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
+    position: relative;
+    align-self: center;
+    margin-top: 10px;
     z-index: 100;
     display: flex;
     justify-content: center;
@@ -279,11 +281,11 @@ h1:hover {
     width: 100%;
     height: 100%;
     fill: white;
-    transition: fill 0.3s ease;
+    transition: all 0.3s ease;
 }
 
-.dock-item:hover .dock-icon svg {
-    fill: #fabd2f;
+.dock-item:hover .dock-icon {
+    filter: drop-shadow(0 0 8px rgba(253, 253, 253, 0.9));
 }
 
 @keyframes fadeInUp {
