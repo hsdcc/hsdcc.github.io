@@ -1,6 +1,5 @@
 body {
     margin: 0;
-    padding: 2rem;
     font-family: sans-serif;
     background-image: url('images/fluid-gruv.png');
     background-size: cover;
@@ -11,6 +10,83 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+/* Entry Screen Styles */
+.entry-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #2e2e2e, #1a1a1a);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    cursor: pointer;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.entry-content {
+    text-align: center;
+    color: white;
+    animation: pulse 2s infinite;
+}
+
+.entry-title {
+    font-size: 5rem;
+    margin: 0;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.entry-subtitle {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    opacity: 0.8;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Hide main content initially */
+.main-content {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url('images/fluid-gruv.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding: 2rem;
+}
+
+.hidden {
+    display: none;
+}
+
+.fade-out {
+    opacity: 0;
+    transform: scale(0.9);
+    pointer-events: none;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.fade-in {
+    animation: fadeIn 0.8s ease forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .glass-container {
