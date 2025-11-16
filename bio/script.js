@@ -2,6 +2,8 @@
 document.addEventListener('DOMContentLoaded', function() {
     const entryScreen = document.getElementById('entry-screen');
     const mainContent = document.getElementById('main-content');
+    const topHeader = document.querySelector('.top-header');
+    const glassContainer = document.querySelector('.glass-container');
     
     entryScreen.addEventListener('click', function() {
         // Add fade-out class to entry screen
@@ -13,8 +15,11 @@ document.addEventListener('DOMContentLoaded', function() {
             entryScreen.remove(); // Completely remove from DOM to prevent interference
             mainContent.classList.remove('hidden');
             
+            // Add slide-in animations to different elements
+            topHeader.classList.add('slide-in-down');
+            glassContainer.classList.add('slide-in-up');
+            
             // Apply 3D effects to main content elements
-            const glassContainer = document.querySelector('.glass-container');
             const logo = document.querySelector('.logo');
             const logoContainer = document.querySelector('.logo-container');
             const logoText = document.querySelector('.logo-text');
