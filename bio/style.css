@@ -96,12 +96,31 @@ h1:hover {
     margin-top: 0;
 }
 
+.logo-container {
+    position: relative;
+    display: inline-block;
+}
+
 .logo {
     width: 150px;
     height: 150px; border-radius: 50%; object-fit: cover;
     border: 3px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     transform-style: preserve-3d;
+}
+
+.logo-text {
+    position: absolute;
+    color: white;
+    font-size: 48px;
+    font-weight: bold;
+    opacity: 0;
+    pointer-events: none;
+    white-space: nowrap;
+    margin-left: 120px; /* positioned to the right of the logo */
+    display: flex;
+    align-items: center;
+    height: 150px;
 }
 
 @keyframes fadeInUp {
