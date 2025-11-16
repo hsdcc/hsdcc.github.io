@@ -59,7 +59,7 @@ body {
 /* Hide main content initially */
 .main-content {
     width: 100%;
-    min-height: 100vh;
+    min-height: 90vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -87,7 +87,7 @@ body {
     border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
-    padding: 2rem;
+    padding: 1.5rem;
     color: white;
     max-width: 800px;
     width: 90%;
@@ -96,7 +96,7 @@ body {
     margin-top: 8px;
     transform-origin: center center;
     position: relative;
-    min-height: 300px;
+    min-height: 200px;
 }
 
 /* Ensure elements with 3D effects maintain proper rendering context */
@@ -111,6 +111,7 @@ body {
     transform-style: preserve-3d;
     transform: translateZ(20px); /* Lift content slightly forward for better 3D effect */
     pointer-events: auto;
+    margin-bottom: 60px; /* Space for the dock */
 }
 
 .has-3d-effect {
@@ -174,10 +175,21 @@ a:active {
 
 h1 {
     transition: text-shadow 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-align: center;
 }
 
 h1:hover {
     text-shadow: 0 0 5px #ebdbb2;
+}
+
+.hi-gif {
+    height: 1.5em;
+    vertical-align: middle;
+    border-radius: 4px;
 }
 
 .top-header {
@@ -214,6 +226,64 @@ h1:hover {
     display: flex;
     align-items: center;
     height: 150px;
+}
+
+/* Dock Styles */
+.dock-container {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+}
+
+.dock {
+    display: flex;
+    align-items: end;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 10px 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.dock-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 8px;
+    transition: all 0.3s ease;
+    border-radius: 12px;
+    padding: 10px;
+}
+
+.dock-icon {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    color: white;
+}
+
+.dock-item:hover .dock-icon {
+    transform: scale(1.05);
+}
+
+.dock-icon svg {
+    width: 100%;
+    height: 100%;
+    fill: white;
+    transition: fill 0.3s ease;
+}
+
+.dock-item:hover .dock-icon svg {
+    fill: #fabd2f;
 }
 
 @keyframes fadeInUp {
