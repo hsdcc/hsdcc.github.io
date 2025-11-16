@@ -1,18 +1,29 @@
+// Entry Screen Functionality
 document.addEventListener('DOMContentLoaded', function() {
+    const entryScreen = document.getElementById('entry-screen');
     const mainContent = document.getElementById('main-content');
     
-    // Remove the hidden class immediately to show content
-    mainContent.classList.remove('hidden');
-    
-    // Apply 3D effects to main content elements
-    const glassContainer = document.querySelector('.glass-container');
-    const logo = document.querySelector('.logo');
-    const logoContainer = document.querySelector('.logo-container');
-    const logoText = document.querySelector('.logo-text');
+    entryScreen.addEventListener('click', function() {
+        // Add fade-out class to entry screen
+        entryScreen.classList.add('fade-out');
+        
+        // After a short delay, remove the entry screen completely from DOM 
+        // and show main content
+        setTimeout(() => {
+            entryScreen.remove(); // Completely remove from DOM to prevent interference
+            mainContent.classList.remove('hidden');
+            
+            // Apply 3D effects to main content elements
+            const glassContainer = document.querySelector('.glass-container');
+            const logo = document.querySelector('.logo');
+            const logoContainer = document.querySelector('.logo-container');
+            const logoText = document.querySelector('.logo-text');
 
-    apply3dEffect(glassContainer, 30);
-    apply3dEffect(logo, 45);  // apply 3d effect to logo
-    applyMoveEffect(logoContainer, logoText);  // apply movement effect to container with text
+            apply3dEffect(glassContainer, 30);
+            apply3dEffect(logo, 45);  // apply 3d effect to logo
+            applyMoveEffect(logoContainer, logoText);  // apply movement effect to container with text
+        }, 500);
+    });
 });
 
 const apply3dEffect = (element, strength = 20) => {
