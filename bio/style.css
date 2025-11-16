@@ -110,7 +110,7 @@ body {
 .glass-container-3d .content {
     transform-style: preserve-3d;
     transform: translateZ(20px); /* Lift content slightly forward for better 3D effect */
-    pointer-events: none;
+    pointer-events: auto;
 }
 
 .has-3d-effect {
@@ -141,6 +141,9 @@ a {
     text-decoration: none;
     transition: color 0.3s ease;
     position: relative;
+    cursor: pointer;
+    display: inline-block;
+    padding: 5px 0;
 }
 
 a::after {
