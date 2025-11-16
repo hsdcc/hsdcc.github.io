@@ -78,43 +78,15 @@ body {
     transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-.slide-in-up {
-    animation: slideInUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
 
-.slide-in-down {
-    animation: slideInDown 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-
-@keyframes slideInUp {
-    from { 
-        opacity: 0; 
-        transform: translateY(50px); 
-    }
-    to { 
-        opacity: 1; 
-        transform: translateY(0); 
-    }
-}
-
-@keyframes slideInDown {
-    from { 
-        opacity: 0; 
-        transform: translateY(-50px); 
-    }
-    to { 
-        opacity: 1; 
-        transform: translateY(0); 
-    }
-}
 
 .glass-container {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0));
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
     border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
     padding: 2rem;
     color: white;
     max-width: 800px;
@@ -122,6 +94,9 @@ body {
     transform-style: preserve-3d;
     margin: 0 auto;
     margin-top: 8px;
+    transform-origin: center center;
+    position: relative;
+    min-height: 300px;
 }
 
 /* Ensure elements with 3D effects maintain proper rendering context */
@@ -129,6 +104,19 @@ body {
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     will-change: transform;
+    transform-style: preserve-3d;
+}
+
+.glass-container-3d .content {
+    transform-style: preserve-3d;
+    transform: translateZ(20px); /* Lift content slightly forward for better 3D effect */
+    pointer-events: none;
+}
+
+.has-3d-effect {
+    transform-style: preserve-3d;
+    transform-origin: center center;
+    position: relative;
 }
 
 .content {

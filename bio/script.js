@@ -15,11 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
             entryScreen.remove(); // Completely remove from DOM to prevent interference
             mainContent.classList.remove('hidden');
             
-            // Add slide-in animations to different elements
-            topHeader.classList.add('slide-in-down');
-            glassContainer.classList.add('slide-in-up');
-            
-            // Apply 3D effects to main content elements
+            // Apply 3D effects to main content elements immediately without animations
             const logo = document.querySelector('.logo');
             const logoContainer = document.querySelector('.logo-container');
             const logoText = document.querySelector('.logo-text');
@@ -32,6 +28,18 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 const apply3dEffect = (element, strength = 20) => {
+    // Ensure the element has proper 3D rendering context
+    element.style.transformStyle = 'preserve-3d';
+    element.style.perspective = '1000px';
+    element.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+    element.style.transformOrigin = 'center center';
+    element.style.transition = 'transform 0.1s ease';
+    element.style.position = 'relative';
+    element.style.zIndex = '1';
+    
+    // Apply the 3D class to ensure CSS 3D context is properly set
+    element.classList.add('has-3d-effect');
+    
     let target = { x: 0, y: 0 };
     let current = { x: 0, y: 0 };
 
