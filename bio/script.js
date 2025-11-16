@@ -44,4 +44,4 @@ const glassContainer = document.querySelector('.glass-container');
 const logo = document.querySelector('.logo');
 
 apply3dEffect(glassContainer, 30);
-apply3dEffect(logo, 60);
+apply3dEffect(logo, 45);
