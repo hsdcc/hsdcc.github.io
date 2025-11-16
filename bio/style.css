@@ -19,7 +19,6 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, #2e2e2e, #1a1a1a);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -28,30 +27,32 @@ body {
     transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
+.entry-screen::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('images/fluid-gruv.png');
+    background-size: cover;
+    background-position: center;
+    filter: blur(10px);
+    z-index: -1;
+}
+
 .entry-content {
     text-align: center;
     color: white;
-    animation: pulse 2s infinite;
 }
 
 .entry-title {
-    font-size: 5rem;
-    margin: 0;
-    font-weight: bold;
-    letter-spacing: 2px;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-}
-
-.entry-subtitle {
     font-size: 1.5rem;
-    margin-top: 1rem;
-    opacity: 0.8;
-}
-
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
+    margin: 0;
+    font-weight: normal;
+    letter-spacing: 2px;
+    font-family: 'Dancing Script', cursive;
+    text-shadow: none;
 }
 
 /* Hide main content initially */
