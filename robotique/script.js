@@ -143,4 +143,93 @@ document.addEventListener('DOMContentLoaded', () => {
             showSlide(currentSlide - 1);
         }
     }
+    
+    // Interactive voltage graph functionality
+    const voltageSlider = document.getElementById('voltageSlider');
+    const voltageValue = document.getElementById('voltageValue');
+    const voltageWave = document.getElementById('voltageWave');
+    const voltageLabel = document.getElementById('voltageLabel');
+    
+    if (voltageSlider) {
+        voltageSlider.addEventListener('input', updateVoltageGraph);
+        
+        function updateVoltageGraph() {
+            const voltage = voltageSlider.value;
+            voltageValue.textContent = voltage;
+            if (voltageLabel) {
+                voltageLabel.textContent = voltage + ' V';
+            }
+            
+            // Update the wave path based on voltage
+            // Higher voltage = higher amplitude
+            const amplitude = (voltage / 24) * 50; // Scale amplitude based on voltage
+            
+            // Create the wave path with the new amplitude
+            // The wave path creates a sine-like wave
+            const centerY = 125; // Center Y position
+            const startX = 50;
+            const endX = 450;
+            
+            // Calculate control points for the quadratic curves
+            const cp1X = 100;
+            const cp1Y = centerY - amplitude;
+            const cp2X = 150;
+            const cp2Y = centerY;
+            const cp3X = 200;
+            const cp3Y = centerY + amplitude;
+            const cp4X = 250;
+            const cp4Y = centerY;
+            const cp5X = 300;
+            const cp5Y = centerY - amplitude;
+            const cp6X = 350;
+            const cp6Y = centerY;
+            const cp7X = 400;
+            const cp7Y = centerY + amplitude;
+            
+            // Construct the path string
+            const pathData = `M ${startX} ${centerY} Q ${cp1X} ${cp1Y} ${cp2X} ${cp2Y} Q ${cp3X} ${cp3Y} ${cp4X} ${cp4Y} Q ${cp5X} ${cp5Y} ${cp6X} ${cp6Y} Q ${cp7X} ${cp7Y} ${endX} ${centerY}`;
+            
+            voltageWave.setAttribute('d', pathData);
+        }
+        
+        // Initialize the graph
+        updateVoltageGraph();
+        
+        // Smooth moving sine wave animation from right to left
+        let waveOffset = 0;
+        function animateWave() {
+            const voltage = parseFloat(voltageSlider.value);
+            const amplitude = (voltage / 24) * 50;
+            const centerY = 125;
+            const startX = 50;
+            const endX = 450;
+            
+            // Create a smooth sine wave using a single continuous path
+            const frequency = 0.05; // Controls the frequency of the wave - made it stretchier
+            const step = 5; // Smaller step for smoother curve
+            
+            let pathData = `M ${startX} ${centerY}`;
+            
+            // Generate the complete wave path using sine function
+            for (let x = startX; x <= endX; x += step) {
+                const y = centerY + amplitude * Math.sin((x - waveOffset) * frequency);
+                if (x === startX) {
+                    pathData = `M ${x} ${y}`;
+                } else {
+                    pathData += ` L ${x} ${y}`;
+                }
+            }
+            
+            voltageWave.setAttribute('d', pathData);
+            
+            // Move the wave from right to left continuously
+            waveOffset += 3;
+            if (waveOffset > 1000) waveOffset = 0; // Reset to prevent overflow
+            
+            requestAnimationFrame(animateWave);
+        }
+        
+        // Start the animation
+        animateWave();
+    }
 });
