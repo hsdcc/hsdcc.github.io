@@ -117,7 +117,7 @@
         </section>
 
         <section class="section slide">
-            <h2>L'Électricité</h2>
+            <h2>L'Électricité & Le courant électrique</h2>
             <div class="content-box">
                 <div class="definition">
                     <strong>Électricité :</strong> Forme d'énergie résultant du mouvement des électrons dans un conducteur
@@ -264,125 +264,7 @@
             </div>
         </section>
 
-        <section class="section slide">
-            <h2>Exemples de Tension</h2>
-            <div class="content-box">
-                <div class="definition">
-                    <strong>Différentes sources de tension :</strong> La tension varie selon la source d'énergie
-                </div>
-                
-                <div class="voltage-examples">
-                    <div class="usage-grid">
-                        <div class="usage-card">
-                            <p><strong>Batterie AA : 1.5 V</strong></p>
-                        </div>
-                        <div class="usage-card">
-                            <p><strong>Batterie de voiture : 12 V</strong></p>
-                        </div>
-                        <div class="usage-card">
-                            <p><strong>Prise murale : 120-240 V</strong></p>
-                        </div>
-                        <div class="usage-card">
-                            <p><strong>Alimentation Arduino : 5-9 V</strong></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <section class="section slide">
-            <h2>Le Courant Électrique</h2>
-            <div class="content-box">
-                <div class="definition">
-                    <strong>Le courant (I) :</strong> Quantité d'électricité qui traverse un conducteur, exprimé en ampères
-                </div>
-                
-                <div class="current-content">
-                    <div class="current-animation">
-                        <svg viewBox="0 0 400 200" class="current-svg">
-                            <defs>
-                                <filter id="current-glow">
-                                    <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
-                                    <feMerge>
-                                        <feMergeNode in="coloredBlur"/>
-                                        <feMergeNode in="SourceGraphic"/>
-                                    </feMerge>
-                                </filter>
-                                <linearGradient id="wire-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#c0c0c0; stop-opacity:1" />
-                                    <stop offset="50%" style="stop-color:#a9a9a9; stop-opacity:1" />
-                                    <stop offset="100%" style="stop-color:#808080; stop-opacity:1" />
-                                </linearGradient>
-                            </defs>
-
-                            <!-- Wire circuit -->
-                            <path id="current-path" d="M 100,150 L 100,80 L 300,80 L 300,150 L 100,150" fill="none" stroke="url(#wire-gradient)" stroke-width="6"/>
-
-                            <!-- Current flow arrows -->
-                            <g filter="url(#current-glow)">
-                                <g class="current-arrow">
-                                    <polygon points="95,150 105,140 100,150" fill="#00abff" />
-                                    <animateMotion dur="3s" repeatCount="indefinite" begin="-0.5s">
-                                        <mpath xlink:href="#current-path"/>
-                                    </animateMotion>
-                                </g>
-                                <g class="current-arrow">
-                                    <polygon points="95,150 105,140 100,150" fill="#00abff" />
-                                    <animateMotion dur="3s" repeatCount="indefinite" begin="-1.0s">
-                                        <mpath xlink:href="#current-path"/>
-                                    </animateMotion>
-                                </g>
-                                <g class="current-arrow">
-                                    <polygon points="95,150 105,140 100,150" fill="#00abff" />
-                                    <animateMotion dur="3s" repeatCount="indefinite" begin="-1.5s">
-                                        <mpath xlink:href="#current-path"/>
-                                    </animateMotion>
-                                </g>
-                                <g class="current-arrow">
-                                    <polygon points="95,150 105,140 100,150" fill="#00abff" />
-                                    <animateMotion dur="3s" repeatCount="indefinite" begin="-2.0s">
-                                        <mpath xlink:href="#current-path"/>
-                                    </animateMotion>
-                                </g>
-                            </g>
-
-                            <!-- Current meter -->
-                            <circle cx="200" cy="40" r="25" fill="#2c3e50" stroke="#7f8c8d" stroke-width="3" />
-                            <text x="200" y="45" text-anchor="middle" font-size="16" fill="#ecf0f1">2 A</text>
-                            
-                            <!-- Current label -->
-                            <text x="200" y="180" text-anchor="middle" font-size="18" fill="#00abff" font-weight="bold">Courant (A)</text>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section slide">
-            <h2>Exemples de Courant</h2>
-            <div class="content-box">
-                <div class="definition">
-                    <strong>Différentes intensités de courant :</strong> Le courant varie selon les appareils électriques
-                </div>
-                
-                <div class="current-examples">
-                    <div class="usage-grid">
-                        <div class="usage-card">
-                            <p><strong>LED : 0.02 A (20 mA)</strong></p>
-                        </div>
-                        <div class="usage-card">
-                            <p><strong>Ampoule 60W : 0.5 A</strong></p>
-                        </div>
-                        <div class="usage-card">
-                            <p><strong>Moteur Arduino : 0.1-2 A</strong></p>
-                        </div>
-                        <div class="usage-card">
-                            <p><strong>Four électrique : 10-20 A</strong></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <section class="section slide">
             <h2>La Relation entre Tension et Courant</h2>

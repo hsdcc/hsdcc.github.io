@@ -561,6 +561,13 @@ header h1 {
     margin-top: 30px;
 }
 
+/* Center the voltage content specifically */
+.voltage-content {
+    justify-content: center; /* Center the content horizontally */
+    flex-direction: column; /* Stack items vertically for better centering */
+    align-items: center; /* Center items within the container */
+}
+
 .voltage-animation, .current-animation {
     flex: 1;
     background-color: #000;
@@ -607,6 +614,7 @@ header h1 {
     flex-direction: column;
     align-items: center;
     gap: 20px;
+    width: 100%;
 }
 
 .voltage-graph {
@@ -616,12 +624,25 @@ header h1 {
     background-color: #000;
     border-radius: 15px;
     padding: 10px;
+    margin: 0 auto; /* Center the graph */
 }
 
 .voltage-controls {
     width: 100%;
     max-width: 400px;
     text-align: center;
+    margin: 0 auto; /* Center the controls */
+}
+
+.voltage-layout {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+.voltage-examples-right {
+    flex: 1;
+    min-width: 250px;
 }
 
 .slider {
