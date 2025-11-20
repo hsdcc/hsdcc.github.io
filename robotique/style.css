@@ -608,6 +608,68 @@ header h1 {
     margin-bottom: 10px;
 }
 
+/* Resistor Color Bands */
+.resistor-colors-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.color-code-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    width: 100%;
+}
+
+.color-code-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px;
+}
+
+.color-band {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid #555;
+}
+
+.resistor-diagram {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.resistor-body {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 200px;
+    height: 50px;
+    background-color: #8B4513; /* Brown resistor body */
+    border-radius: 10px;
+    margin: 20px auto;
+    position: relative;
+}
+
+.band {
+    height: 100%;
+    width: 15px;
+    border-radius: 4px;
+}
+
+.resistor-value {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: var(--highlight-color);
+}
+
 /* Interactive voltage graph */
 .voltage-interactive {
     display: flex;
