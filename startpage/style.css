@@ -51,15 +51,18 @@ body::before {
   }
 }
 
-/* container + fade-in */
-.container {
-  position: relative;  /* add this so z-index works */
-  z-index: 1;          /* higher than bubble cursor */
-  text-align: center;
-  max-width: 700px;
-  padding: 2rem 3rem;
+/* hsd! text styling */
+h1 {
+  font-size: 2.5rem; /* slightly bigger */
+  margin-bottom: 2rem;
+  color: #00ffee;
+  text-shadow: 0 0 6px #00ffee88, 0 0 10px #00ffee55;
+  font-family: 'cursive', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  z-index: 1;
+  position: relative;
   animation: fadeIn 1.5s ease-out;
 }
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -69,137 +72,4 @@ body::before {
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-/* title with static glow */
-h1 {
-  font-size: 2.5rem;
-  margin-bottom: 2rem;
-  color: #00ffee;
-  text-shadow: 0 0 6px #00ffee88, 0 0 10px #00ffee55;
-}
-
-/* search box */
-.search-box input {
-  width: 100%;
-  padding: 0.6rem 1rem;
-  border: none;
-  border-radius: 10px;
-  font-size: 1rem;
-  background: #1c1c1c;
-  color: #fff;
-  outline: none;
-  margin-bottom: 2rem;
-  box-shadow: 0 0 10px #00ffee22;
-  transition: box-shadow 0.3s ease, transform 0.2s ease;
-}
-.search-box input:focus {
-  box-shadow: 0 0 15px #00ffee99;
-  transform: scale(1.02);
-}
-
-/* links sections */
-.links {
-  position: relative;
-  z-index: 1;  /* also above bubble */
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  gap: 2rem;
-  animation: fadeInLinks 2s ease-in;
-}
-@keyframes fadeInLinks {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* each card with stretchy bubble behind on hover */
-.group {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  background: #121212cc;
-  padding: 1rem 1.5rem;
-  border-radius: 12px;
-  overflow: hidden;
-  z-index: 1;
-  cursor: default;
-  transition: transform 0.3s ease;
-}
-.group:hover {
-  transform: translateY(-5px);
-}
-/* bubble */
-.group::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  background: #00ffee22;
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  transition: width 0.4s ease, height 0.4s ease;
-  z-index: -1;
-}
-.group:hover::before {
-  width: 140%;
-  height: 140%;
-}
-
-/* group title */
-.group h2 {
-  font-size: 0.9rem;
-  color: #888;
-  margin-bottom: 0.5rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-/* links */
-.group a {
-  color: #f5f5f5;
-  text-decoration: none;
-  transition: color 0.2s ease, transform 0.2s ease;
-  position: relative;
-}
-.group a:hover {
-  color: #00ffee;
-  transform: scale(1.05);
-}
-.group a::after {
-  content: "";
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background: #00ffee;
-  transition: width 0.3s ease;
-}
-.group a:hover::after {
-  width: 100%;
-}
-
-/* bubble cursor below everything */
-.bubble-cursor {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 32px;
-  height: 32px;
-  border: 2px solid #00ffee;
-  border-radius: 50%;
-  background: transparent;
-  pointer-events: none;
-  transform: translate(-50%, -50%) scale(1);
-  z-index: 0;  /* low z-index = behind */
 }
