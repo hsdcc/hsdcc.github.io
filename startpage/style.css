@@ -7,7 +7,7 @@
 }
 
 body {
-  background: radial-gradient(ellipse at bottom, #0a0a0a 0%, #000 100%);
+  background: #0a0a0a;
   color: #f5f5f5;
   display: flex;
   justify-content: center;
@@ -17,59 +17,140 @@ body {
   position: relative;
 }
 
-/* ambient floating blobs */
-body::before,
-body::after {
+/* Glassy background effect */
+.glass-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(255, 99, 132, 0.15), transparent 25%),
+    radial-gradient(circle at 80% 70%, rgba(132, 99, 255, 0.15), transparent 25%),
+    radial-gradient(circle at 40% 80%, rgba(99, 255, 132, 0.15), transparent 25%),
+    radial-gradient(circle at 60% 20%, rgba(99, 132, 255, 0.15), transparent 25%),
+    radial-gradient(circle at 30% 60%, rgba(255, 218, 99, 0.15), transparent 25%),
+    radial-gradient(circle at 70% 40%, rgba(255, 99, 255, 0.15), transparent 25%),
+    radial-gradient(circle at 50% 50%, rgba(99, 255, 255, 0.1), transparent 30%);
+  backdrop-filter: blur(2px);
+  z-index: 0;
+  animation: subtleMovement 25s infinite alternate ease-in-out;
+}
+
+/* Light sources for dynamic lighting effect */
+.light-source {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  filter: blur(60px);
+  z-index: 0;
+  opacity: 0.4;
+  animation: lightPulse 8s infinite alternate ease-in-out;
+}
+
+.light-source:nth-child(2) {
+  background: radial-gradient(circle, #ff6b6b, transparent 70%);
+  top: 10%;
+  left: 15%;
+  animation-delay: 0s;
+}
+
+.light-source:nth-child(3) {
+  background: radial-gradient(circle, #4ecdc4, transparent 70%);
+  bottom: 15%;
+  right: 20%;
+  animation-delay: 2s;
+}
+
+.light-source:nth-child(4) {
+  background: radial-gradient(circle, #ffd166, transparent 70%);
+  top: 40%;
+  right: 10%;
+  animation-delay: 4s;
+}
+
+/* Subtle blob effect */
+body::before {
   content: "";
   position: absolute;
-  width: 800px;
-  height: 800px;
-  background: radial-gradient(circle, #00ffee33, transparent 70%);
-  animation: floatBlob 20s ease-in-out infinite;
-  filter: blur(120px);
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(102, 126, 234, 0.1), transparent 70%);
+  border-radius: 50%;
+  top: 15%;
+  left: 10%;
+  filter: blur(80px);
   z-index: 0;
-  pointer-events: none;
+  animation: subtleBlobMove 30s infinite alternate ease-in-out;
+  opacity: 0.3;
 }
-body::after {
-  right: -200px;
-  top: 50%;
-  animation-delay: 10s;
-}
-body::before {
-  left: -200px;
-  top: 0%;
-}
-@keyframes floatBlob {
+
+@keyframes subtleMovement {
   0% {
-    transform: translateY(0) scale(1);
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(-5px, -5px) rotate(0.5deg);
   }
   50% {
-    transform: translateY(-50px) scale(1.1);
+    transform: translate(0, 5px) rotate(-0.3deg);
+  }
+  75% {
+    transform: translate(5px, -3px) rotate(0.2deg);
   }
   100% {
-    transform: translateY(0) scale(1);
+    transform: translate(0, 0) rotate(0deg);
   }
 }
 
-/* hsd! text styling */
-h1 {
-  font-size: 2.5rem; /* slightly bigger */
+@keyframes lightPulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 0.5;
+  }
+}
+
+@keyframes subtleBlobMove {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(20px, -20px);
+  }
+}
+
+/* Animated text styling */
+#animated-text {
+  font-size: 2.5rem;
   margin-bottom: 2rem;
   color: #00ffee;
-  text-shadow: 0 0 6px #00ffee88, 0 0 10px #00ffee55;
+  text-shadow: 
+    0 0 8px #00ffeeaa, 
+    0 0 15px #00ffee66,
+    15px 10px 20px rgba(0, 255, 238, 0.4); /* Enhanced depth shadow */
   font-family: 'cursive', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  z-index: 1;
+  z-index: 2;
   position: relative;
-  animation: fadeIn 1.5s ease-out;
+  transition: transform 0.1s ease-out;
+  letter-spacing: 3px;
+  font-weight: 700;
+  font-style: italic; /* Makes the text cursive */
+  text-align: center;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Remove glow effect and entrance animation */
+#animated-text::before {
+  display: none;
+}
+
+/* Remove the entrance animation */
+#animated-text {
+  animation: none;
+  opacity: 1;
+  transform: none;
 }
