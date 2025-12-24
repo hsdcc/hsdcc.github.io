@@ -10,6 +10,43 @@
   <div class="glass-background"></div>
   <div class="blobs-container"></div>
   <h1 id="animated-text">hsd!</h1>
+  
+  <!-- Timer/Pomodoro UI - Initially hidden -->
+  <div id="timer-ui" class="timer-ui-container">
+    <div class="timer-glass-panel">
+      <div class="timer-display">
+        <span id="minutes">25</span>:<span id="seconds">00</span>
+      </div>
+      <div class="timer-controls">
+        <button id="start-pause-btn" class="control-btn">Start</button>
+        <button id="reset-btn" class="control-btn">Reset</button>
+      </div>
+      <div class="mode-selector">
+        <button id="pomodoro-btn" class="mode-btn active">Pomodoro</button>
+        <button id="short-break-btn" class="mode-btn">Short Break</button>
+        <button id="long-break-btn" class="mode-btn">Long Break</button>
+      </div>
+      <div class="timer-settings">
+        <label for="work-duration">Work (min):</label>
+        <input type="number" id="work-duration" min="1" max="60" value="25">
+        <label for="short-break">Break (min):</label>
+        <input type="number" id="short-break" min="1" max="30" value="5">
+        <label for="long-break">Long Break (min):</label>
+        <input type="number" id="long-break" min="1" max="60" value="15">
+      </div>
+    </div>
+  </div>
+  
+  <!-- Minimal Timer Display - Shown when timer is running -->
+  <div id="minimal-timer" class="minimal-timer-container">
+    <div class="minimal-clock">
+      <div class="minimal-time-display">
+        <span id="minimal-minutes">25</span>:<span id="minimal-seconds">00</span>
+      </div>
+      <button id="stop-timer-btn" class="stop-btn">Stop</button>
+    </div>
+  </div>
+  
   <script src="script.js"></script>
 </body>
 </html>
