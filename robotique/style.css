@@ -87,6 +87,111 @@ body.dark-mode {
     --dark-mode-toggle-hover-bg-color: #666;
 }
 
+body.presentation-mode {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --header-h1-color: #000000;
+    --subtitle-color: #333333;
+    --section-h2-color: #000000;
+    --section-h3-color: #333333;
+    --content-box-bg: rgba(255, 255, 255, 0.9);
+    --content-box-border: #cccccc;
+    --definition-bg: #f0f0f0;
+    --definition-border-left: #000000;
+    --highlight-color: #000000;
+    --formula-part-bg: #e0e0e0;
+    --formula-part-border: #000000;
+    --formula-part-color: #000000;
+    --formula-result-bg: #cccccc;
+    --formula-result-color: #000000;
+    --usage-card-bg: #f0f0f0;
+    --usage-card-border: #000000;
+    --usage-card-hover-border: #666666;
+    --component-item-bg: #f0f0f0;
+    --component-item-border-left: #000000;
+    --component-item-hover-bg: #e0e0e0;
+    --component-item-hover-border-left: #666666;
+    --component-item-h4-color: #000000;
+    --node-bg: #f0f0f0;
+    --node-border: #000000;
+    --node-h4-color: #000000;
+    --connecting-line-color: #000000;
+    --step-card-bg: #f0f0f0;
+    --step-card-border: #000000;
+    --step-number-bg: #cccccc;
+    --step-number-color: #000000;
+    --step-card-h3-color: #000000;
+    --step-card-p-color: #333333;
+    --code-example-bg: #e0e0e0;
+    --code-example-border-left: #000000;
+    --code-example-pre-color: #000000;
+    --step-arrow-color: #000000;
+    --electron-sphere-fill: #000000;
+    --nav-btn-bg-color: #cccccc;
+    --nav-btn-hover-bg-color: #aaaaaa;
+    --dark-mode-toggle-bg-color: #cccccc;
+    --dark-mode-toggle-hover-bg-color: #aaaaaa;
+}
+
+body.presentation-mode.dark-mode {
+    --bg-color: #000000;
+    --text-color: #ffffff;
+    --header-h1-color: #ffffff;
+    --subtitle-color: #cccccc;
+    --section-h2-color: #ffffff;
+    --section-h3-color: #cccccc;
+    --content-box-bg: rgba(0, 0, 0, 0.9);
+    --content-box-border: #ffffff;
+    --definition-bg: #333333;
+    --definition-border-left: #ffffff;
+    --highlight-color: #ffffff;
+    --formula-part-bg: #333333;
+    --formula-part-border: #ffffff;
+    --formula-part-color: #ffffff;
+    --formula-result-bg: #666666;
+    --formula-result-color: #ffffff;
+    --usage-card-bg: #333333;
+    --usage-card-border: #ffffff;
+    --usage-card-hover-border: #cccccc;
+    --component-item-bg: #333333;
+    --component-item-border-left: #ffffff;
+    --component-item-hover-bg: #555555;
+    --component-item-hover-border-left: #cccccc;
+    --component-item-h4-color: #ffffff;
+    --node-bg: #333333;
+    --node-border: #ffffff;
+    --node-h4-color: #ffffff;
+    --connecting-line-color: #ffffff;
+    --step-card-bg: #333333;
+    --step-card-border: #ffffff;
+    --step-number-bg: #666666;
+    --step-number-color: #ffffff;
+    --step-card-h3-color: #ffffff;
+    --step-card-p-color: #cccccc;
+    --code-example-bg: #333333;
+    --code-example-border-left: #ffffff;
+    --code-example-pre-color: #ffffff;
+    --step-arrow-color: #ffffff;
+    --electron-sphere-fill: #ffffff;
+    --nav-btn-bg-color: #666666;
+    --nav-btn-hover-bg-color: #888888;
+    --dark-mode-toggle-bg-color: #666666;
+    --dark-mode-toggle-hover-bg-color: #888888;
+}
+
+/* Disable hover effects in presentation mode */
+body.presentation-mode .usage-card:hover,
+body.presentation-mode .component-item:hover {
+    transform: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+body.presentation-mode .nav-btn:hover,
+body.presentation-mode .dark-mode-toggle:hover,
+body.presentation-mode .presentation-mode-toggle:hover {
+    background-color: var(--nav-btn-bg-color);
+}
+
 html, body {
     height: 100%;
     overflow: hidden; /* Remove vertical scrolling */
@@ -102,6 +207,13 @@ body {
     animation: gradientShift 20s ease infinite;
     border-radius: 20px; /* Rounded borders for the main container */
     transition: background-color 0.5s cubic-bezier(0.22, 1, 0.22, 1); /* Smooth transition for dark mode */
+}
+
+body.presentation-mode {
+    animation: none;
+    background-attachment: initial;
+    background-size: initial;
+    border-radius: 0;
 }
 
 @keyframes gradientShift {
@@ -786,6 +898,28 @@ transition: background-color 0.3s cubic-bezier(0.22, 1, 0.22, 1);
 
 .dark-mode-toggle:hover {
     background-color: var(--dark-mode-toggle-hover-bg-color, #444);
+}
+
+
+
+/* Hide Buttons Toggle */
+.hide-buttons-toggle {
+    position: fixed;
+    top: 5px;
+    right: 5px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 2px 5px;
+    border-radius: 2px;
+    cursor: pointer;
+    font-size: 0.7rem;
+    z-index: 1000;
+    transition: background-color 0.3s;
+}
+
+.hide-buttons-toggle:hover {
+    background-color: rgba(0, 0, 0, 0.7);
 }
 
 

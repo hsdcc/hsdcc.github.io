@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
     const darkModeToggle = document.getElementById('darkModeToggle');
+    const hideButtonsToggle = document.getElementById('hideButtonsToggle');
     let currentSlide = 0;
 
     function showSlide(index) {
@@ -39,27 +40,75 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Dark/Light mode toggle
+    // Mode toggle (cycles through normal, dark, presentation)
+    let currentMode = 0; // 0: normal, 1: dark, 2: presentation
     darkModeToggle.addEventListener('click', () => {
-        document.body.classList.toggle('dark-mode');
-        localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
-        updateDarkModeIcon();
+        currentMode = (currentMode + 1) % 3;
+        updateMode();
+        localStorage.setItem('currentMode', currentMode);
     });
 
-    // Check for saved dark mode preference
-    if (localStorage.getItem('darkMode') === 'true') {
-        document.body.classList.add('dark-mode');
+    // Check for saved mode preference
+    const savedMode = localStorage.getItem('currentMode');
+    if (savedMode !== null) {
+        currentMode = parseInt(savedMode);
+        updateMode();
     }
 
-    function updateDarkModeIcon() {
-        if (document.body.classList.contains('dark-mode')) {
-            darkModeToggle.innerHTML = '☀️';
-        } else {
-            darkModeToggle.innerHTML = '🌙';
+    function updateMode() {
+        document.body.classList.remove('dark-mode', 'presentation-mode');
+        if (currentMode === 1) {
+            document.body.classList.add('dark-mode');
+        } else if (currentMode === 2) {
+            document.body.classList.add('presentation-mode');
+        }
+        updateModeIcon();
+        updatePresentationModeUI();
+    }
+
+    function updateModeIcon() {
+        if (currentMode === 0) {
+            darkModeToggle.innerHTML = '🌙'; // to dark
+        } else if (currentMode === 1) {
+            darkModeToggle.innerHTML = '☀️'; // to presentation
+        } else if (currentMode === 2) {
+            darkModeToggle.innerHTML = '📊'; // to normal
         }
     }
 
-    updateDarkModeIcon();
+    updateModeIcon();
+
+    function updatePresentationModeUI() {
+        const isPresentation = currentMode === 2;
+        hideButtonsToggle.style.display = isPresentation ? 'block' : 'none';
+        if (!isPresentation) {
+            // Show buttons if exiting presentation mode
+            showButtons();
+        }
+    }
+
+    // Hide buttons toggle
+    hideButtonsToggle.addEventListener('click', () => {
+        if (prevBtn.style.display === 'none') {
+            showButtons();
+        } else {
+            hideButtons();
+        }
+    });
+
+    function hideButtons() {
+        prevBtn.style.display = 'none';
+        nextBtn.style.display = 'none';
+        darkModeToggle.style.display = 'none';
+        presentationModeToggle.style.display = 'none';
+    }
+
+    function showButtons() {
+        prevBtn.style.display = 'block';
+        nextBtn.style.display = 'block';
+        darkModeToggle.style.display = 'block';
+        presentationModeToggle.style.display = 'block';
+    }
 
     // Initialize the first slide
     showSlide(0);
